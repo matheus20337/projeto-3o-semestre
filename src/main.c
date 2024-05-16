@@ -37,7 +37,7 @@ void tela_principal() {
 		/* TODO: substituir o número 12 pela quantidade real
 		 * de produtos cadastrados.
 		 */
-		printf("Números de produtos cadastrados %d", 12);
+		printf("Números de produtos cadastrados %d", 10);
 		putchar('\n');
 		printf("1: Cadastrar produto.\n");
 		printf("2: Listar todos os produtos.\n");

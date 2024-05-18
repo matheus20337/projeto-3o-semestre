@@ -5,14 +5,19 @@
 #
 CC=x86_64-w64-mingw32-cc
 
-all: main.o utilidades.o
-	$(CC) main.o utilidades.o -o cadastro.exe
+all: main.o utilidades.o tela_cadastro.o tela_principal.o tela_inicial.o
+	$(CC) main.o utilidades.o tela_cadastro.o tela_principal.o tela_inicial.o -o cadastro.exe
 
 main.o: src/main.c
 	$(CC) -c src/main.c -o main.o
-
 utilidades.o: src/utilidades.c
-	$(CC) -c src/utilidades.c -o utilidades.o
+	$(CC) -c src/utilidades.c
+tela_cadastro.o: src/tela_cadastro.c
+	$(CC) -c src/tela_cadastro.c
+tela_principal.o: src/tela_principal.c
+	$(CC) -c src/tela_principal.c
+tela_inicial.o: src/tela_inicial.c
+	$(CC) -c src/tela_inicial.c
 
 clean:
 	rm *.o cadastro.exe

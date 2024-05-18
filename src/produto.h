@@ -24,4 +24,11 @@ typedef struct produto {
 	bool status;
 } produto;
 
+/* Como a lista de produtos deverá ser acessível
+ * por todo o programa, faz sentido fazê-la uma
+ * variável global.
+ */
+extern produto *lista_produtos;
+extern int n_produtos_cadastrados;
+
 #endif /* PRODUTO_H */

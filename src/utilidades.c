@@ -30,3 +30,30 @@ void get_str(char *str, int limite) {
 	}
 	str[i] = '\0';
 }
+
+/**
+ * Pergunta ao usuário um número inteiro repetidas vezes
+ * até receber um número inteiro.
+ */
+int pergunta_opcoes(char *pergunta) {
+	int resposta, status;
+
+	do {
+		puts(pergunta);
+		status = scanf("%d", &resposta);
+
+		/* scanf retorna o número de valores encontrados e
+		 * atribuídos. Se este valor for zero, o usuário não 
+		 * digitou um número.
+		 *
+		 * É importante verificar se o valor é zero para evitar
+		 * loops infinitos.
+		 */
+		if (status == 0) {
+			printf("Opção Inválida.\n");
+			setbuf(stdin, NULL);
+		}
+	} while (status == 0);
+
+	return resposta;
+}

@@ -1,0 +1,15 @@
+# Este Makefile certamente produz um execultável do
+# windows, porém eu não testei se o Makefile em si roda
+# no windows.
+# TODO: testar este makefile em um computador rodando windows.
+#
+CC=x86_64-w64-mingw32-cc
+
+all: main.o
+	$(CC) main.o -o cadastro.exe
+
+main.o: src/main.c
+	$(CC) -c src/main.c -o main.o
+
+clean:
+	rm *.o cadastro.exe

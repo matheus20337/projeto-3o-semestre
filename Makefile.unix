@@ -1,10 +1,12 @@
 CC=gcc
 
-all: main.o
-	$(CC) main.o -o cadastro
+all: main.o utilidades.o
+	$(CC) main.o utilidades.o -o cadastro
 
 main.o: src/main.c
 	$(CC) -c src/main.c -o main.o
+utilidades.o: src/utilidades.c
+	$(CC) -c src/utilidades.c -o utilidades.o
 
 clean:
 	rm *.o cadastro

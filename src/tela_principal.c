@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdbool.h>
 
 #include "produto.h"
 #include "utilidades.h"
@@ -35,7 +36,7 @@ void tela_principal() {
 	bool sair = false;
 
 	do {
-		printf("Números de produtos cadastrados %d/%d", n_produtos_cadastrados, MAX_PRODUTOS);
+		printf("Números de produtos cadastrados %d/%d\n", n_produtos_cadastrados, MAX_PRODUTOS);
 		putchar('\n');
 		printf("1: Cadastrar produto.\n");
 		printf("2: Listar todos os produtos.\n");
@@ -48,21 +49,27 @@ void tela_principal() {
 
 		switch (opcao) {
 			case 1:
+				limpa_tela();
 				tela_cadastro();
+				limpa_tela();
 				break;
 			case 2:
+				limpa_tela();
 				listar_produtos();
 				break;
 			case 3:
+				limpa_tela();
 				printf("Não Implementado.\n");
 				break;
 			case 4:
+				limpa_tela();
 				printf("Não Implementado.\n");
 				break;
 			case 5:
 				sair = true;
 				break;
 			default:
+				limpa_tela();
 				printf("Opção Inválida.\n");
 				setbuf(stdin, NULL);
 

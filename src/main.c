@@ -22,6 +22,7 @@ int main() {
 		return -1;
 	}
 
+	limpa_tela();
 	tela_inicial();
 
 	free(lista_produtos);

@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 /**
  * Coleta uma string do stdin até encontrar uma quebra 
@@ -56,4 +57,15 @@ int pergunta_opcoes(char *pergunta) {
 	} while (status == 0);
 
 	return resposta;
+}
+
+/**
+ * No melhor dos casos, limpa a tela do terminal, no pior dos casos, nada acontece.
+ */
+void limpa_tela() {
+	#ifdef _WIN32
+	system("cls");
+	#elif __unix /* _WIN32 */
+	system("clear");
+	#endif /* __unix */
 }

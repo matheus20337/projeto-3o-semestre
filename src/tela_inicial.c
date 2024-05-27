@@ -4,6 +4,7 @@
 #include "tela_principal.h"
 #include "utilidades.h"
 #include "produto.h"
+#include "manipulacao_csv.h"
 
 void tela_inicial() {
 	int opcao;
@@ -25,7 +26,9 @@ void tela_inicial() {
 		switch(opcao) {
 			case 1:
 				limpa_tela();
-				printf("\nHAHAHA! Esta opção ainda não foi implementada >:3\n\n");
+				n_produtos_cadastrados = 0;
+				ler_arquivo_csv("produtos.csv");
+				tela_principal();
 				break;
 			case 2:
 				limpa_tela();

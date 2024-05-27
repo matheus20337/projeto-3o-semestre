@@ -4,6 +4,8 @@
 #include "produto.h"
 #include "utilidades.h"
 #include "tela_cadastro.h"
+#include "manipulacao_csv.h"
+
 /**
  * Mostra todos os produtos na tela.
  */
@@ -63,7 +65,7 @@ void tela_principal() {
 				break;
 			case 4:
 				limpa_tela();
-				printf("Não Implementado.\n");
+				salvar_produtos_csv("produtos.csv");
 				break;
 			case 5:
 				sair = true;

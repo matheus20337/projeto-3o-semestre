@@ -19,8 +19,7 @@ void tela_cadastro() {
 	}
 
 	do {
-		printf("Digite o código do produto: \n");
-		scanf("%d", &prod_temporario.codigo);
+		prod_temporario.codigo = pergunta_inteiro("Digite o código do produto: \n");
 
 		codigo_repetido = false;
 		for (int i = 0; i < n_produtos_cadastrados; i++) {
@@ -39,14 +38,10 @@ void tela_cadastro() {
 	get_str(prod_temporario.marca, MAX_TAMANHO_MARCA);
 	printf("Digite a categoria do produto: ");
 	get_str(prod_temporario.categoria, MAX_TAMANHO_CATEGORIA);
-	printf("Digite o custo por pacote: ");
-	scanf("%f", &prod_temporario.custo_pacote);
-	printf("Digite a quantidade por pacote: ");
-	scanf("%d", &prod_temporario.qnt_por_pacote);
-	printf("Digite o preço unitário: ");
-	scanf("%f", &prod_temporario.preco_unitario);
-	printf("Digite a quantidade mínima desejada no estoque: ");
-	scanf("%d", &prod_temporario.qnt_minima);
+	prod_temporario.custo_pacote = pergunta_float("Digite o custo por pacote: ");
+	prod_temporario.qnt_por_pacote = pergunta_inteiro("Digite a quantidade por pacote: ");
+	prod_temporario.preco_unitario = pergunta_float("Digite o preço unitário: ");
+	prod_temporario.qnt_minima = pergunta_inteiro("Digite a quantidade mínima desejada no estoque: ");
 	putchar('\n');
 	lista_produtos[n_produtos_cadastrados] = prod_temporario;
 	n_produtos_cadastrados++;

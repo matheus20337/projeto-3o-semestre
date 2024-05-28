@@ -47,7 +47,7 @@ void tela_principal() {
 		printf("5: Sair.\n");
 		putchar('\n');
 
-		opcao = pergunta_opcoes("Escolha uma opção: ");
+		opcao = pergunta_inteiro("Escolha uma opção: ");
 
 		switch (opcao) {
 			case 1:

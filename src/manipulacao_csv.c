@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 #include "produto.h"
+#include "utilidades.h"
 
 void ler_arquivo_csv(char* nome_arquivo) {
 	FILE* arquivo = fopen(nome_arquivo, "r");
@@ -23,6 +24,10 @@ void ler_arquivo_csv(char* nome_arquivo) {
 				&lista_produtos[n_produtos_cadastrados].qnt_minima,
 				&lista_produtos[n_produtos_cadastrados].status);
 		if (n_dados == 9) {
+			trim_str(lista_produtos[n_produtos_cadastrados].nome);
+			trim_str(lista_produtos[n_produtos_cadastrados].marca);
+			trim_str(lista_produtos[n_produtos_cadastrados].categoria);
+
 			n_produtos_cadastrados++;
 		} else {
 			/* se o fscanf não encontrar valor algum, a 

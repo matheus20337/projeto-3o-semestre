@@ -13,7 +13,7 @@ void tela_inicial() {
 	do {
 		printf("========================\n");
 		printf("| CADASTRO DE PRODUTOS |\n");
-		printf("=========================\n");
+		printf("========================\n");
 
 		putchar('\n');
 		printf("1: Carregar de um arquivo CSV.\n");

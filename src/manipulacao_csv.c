@@ -3,11 +3,39 @@
 #include "produto.h"
 #include "utilidades.h"
 
+#define MAX_NOME_ARQUIVO 256
+
 void ler_arquivo_csv(char* nome_arquivo) {
 	FILE* arquivo = fopen(nome_arquivo, "r");
 	if (arquivo == NULL) {
-		printf("Erro ao abrir o arquivo para leitura.\n");
-		return;
+		printf("O arquivo produtos.csv não foi encontrado.\n");
+
+		do {
+			if (pergunta_sim_ou_nao("Deseja especificar um arquivo diferente?")) {
+				char novo_nome_arquivo[MAX_NOME_ARQUIVO];
+
+				/* Por algum motivo, setbuf(stdin, NULL) não apagou o stdin aqui.
+				 * Isto é estranho porque o comando apaga o stdin em outras partes
+				 * do código.
+				 * É com um enorme peso no meu coração que eu escrevo a linha abaixo.
+				 * Eu realmente gostaria de saber se este é um jeito correto e aceitável
+				 * de apagar tudo no stdin.
+				 */
+				while (getchar() != '\n');
+
+				printf("Digite o caminho para o arquivo desejado: ");
+				get_str(novo_nome_arquivo, MAX_NOME_ARQUIVO);
+
+				arquivo = fopen(novo_nome_arquivo, "r");
+
+			} else {
+				return;
+			}
+
+			if (arquivo == NULL) {
+				printf("Arquivo não encontrado.\n");
+			}
+		} while (arquivo == NULL);
 	}
 
 	// Lê as informações dos produtos do arquivo CSV

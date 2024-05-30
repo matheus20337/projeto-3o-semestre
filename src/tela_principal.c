@@ -36,6 +36,15 @@ void listar_produtos() {
 void tela_principal() {
 	int opcao;
 	bool sair = false;
+	
+	/* Esta variável é utilizada para perguntar ao 
+	 * usuário se ele deseja sair sem salvar.
+	 * TODO: Desenvolver um sistema melhor de verificação
+	 * de alterações. O sistema atual só verifica se o número
+	 * de produtos é diferente do número de produtos na última vez
+	 * que a lista foi salva.
+	 */
+	int n_produtos_antigos = n_produtos_cadastrados;
 
 	do {
 		printf("Números de produtos cadastrados %d/%d\n", n_produtos_cadastrados, MAX_PRODUTOS);
@@ -66,9 +75,16 @@ void tela_principal() {
 			case 4:
 				limpa_tela();
 				salvar_produtos_csv("produtos.csv");
+				n_produtos_antigos = n_produtos_cadastrados;
 				break;
 			case 5:
-				sair = true;
+				if (n_produtos_antigos != n_produtos_cadastrados) {
+					if (pergunta_sim_ou_nao("Deseja sair sem salvar?")) {
+						sair = true;
+					}
+				} else {
+					sair = true;
+				}
 				break;
 			default:
 				limpa_tela();

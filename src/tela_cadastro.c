@@ -19,7 +19,7 @@ void tela_cadastro() {
 	}
 
 	do {
-		prod_temporario.codigo = pergunta_inteiro("Digite o código do produto: \n");
+		prod_temporario.codigo = pergunta_inteiro("Digite o código do produto: ");
 
 		codigo_repetido = false;
 		for (int i = 0; i < n_produtos_cadastrados; i++) {

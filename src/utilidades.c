@@ -94,7 +94,7 @@ int pergunta_inteiro(char *pergunta) {
 	int resposta, status;
 
 	do {
-		puts(pergunta);
+		printf("%s", pergunta);
 		status = scanf("%d", &resposta);
 
 		/* scanf retorna o número de valores encontrados e
@@ -122,7 +122,7 @@ float pergunta_float(char *pergunta) {
 	float resposta;
 
 	do {
-		puts(pergunta);
+		printf("%s", pergunta);
 		status = scanf("%f", &resposta);
 
 		/* scanf retorna o número de valores encontrados e

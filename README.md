@@ -12,9 +12,13 @@ Seguem abaixo as instruções para a elaboração do projeto:
 O projeto consiste em um sistema de cadastro de produtos de um super-mercado fictício. A aplicação deve ser capaz de criar, editar, visualizar e remover cadastros de produtos. Ela também deve ser capaz de guardar todos estes registros em um arquivo CSV para uso futuro.
 
 ## Instruções para Compilação
-O projeto possui dois Makefiles, um para o windows e um para sistemas _unix-like_.
+Para compilar o projeto no windows, basta executar a seguinte linha de comando:
+```
+make
+```
+Para compilar o projeto em sistemas _unix-like_, o comando será
+```
+make unix
+```
 
-Para compilar o projeto, basta executar a seguinte linha de comando:
-```
-make -f <makefile desejado>
-```
+Por fim, o comando `make clean` removerá os arquivos gerados pelo compilador.

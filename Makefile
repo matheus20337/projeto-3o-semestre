@@ -1,12 +1,10 @@
-# Este Makefile certamente produz um execultável do
-# windows, porém eu não testei se o Makefile em si roda
-# no windows.
-# TODO: testar este makefile em um computador rodando windows.
-#
-CC=x86_64-w64-mingw32-cc
+CC=gcc
 
 all: main.o utilidades.o tela_cadastro.o tela_principal.o tela_inicial.o manipulacao_csv.o
 	$(CC) main.o utilidades.o manipulacao_csv.o tela_cadastro.o tela_principal.o tela_inicial.o -o cadastro.exe
+
+unix: main.o utilidades.o tela_cadastro.o tela_principal.o tela_inicial.o manipulacao_csv.o
+	$(CC) main.o utilidades.o manipulacao_csv.o tela_cadastro.o tela_principal.o tela_inicial.o -o cadastro
 
 main.o: src/main.c src/produto.h src/utilidades.h src/tela_inicial.h
 	$(CC) -c src/main.c
@@ -22,4 +20,4 @@ tela_inicial.o: src/tela_inicial.c src/tela_principal.h src/utilidades.h src/pro
 	$(CC) -c src/tela_inicial.c
 
 clean:
-	rm *.o cadastro
+	rm *.o cadastro cadastro.exe

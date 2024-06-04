@@ -6,6 +6,7 @@
 #include "tela_cadastro.h"
 #include "manipulacao_csv.h"
 #include "tela_edicao_lista.h"
+#include "tela_remocao.h"
 
 /**
  * Mostra todos os produtos na tela.
@@ -53,8 +54,9 @@ void tela_principal() {
 		printf("1: Cadastrar produto.\n");
 		printf("2: Listar todos os produtos.\n");
 		printf("3: Editar cadastro.\n");
-		printf("4: Salvar em arquivo CSV.\n");
-		printf("5: Sair.\n");
+		printf("4: Remover cadastro.\n");
+		printf("5: Salvar em arquivo CSV.\n");
+		printf("6: Sair.\n");
 		putchar('\n');
 
 		opcao = pergunta_inteiro("Escolha uma opção: ");
@@ -75,10 +77,14 @@ void tela_principal() {
 				break;
 			case 4:
 				limpa_tela();
+				tela_remocao();
+				break;
+			case 5:
+				limpa_tela();
 				salvar_produtos_csv("produtos.csv");
 				n_produtos_antigos = n_produtos_cadastrados;
 				break;
-			case 5:
+			case 6:
 				if (n_produtos_antigos != n_produtos_cadastrados) {
 					if (pergunta_sim_ou_nao("Deseja sair sem salvar?")) {
 						sair = true;

@@ -45,8 +45,7 @@ void tela_edicao_lista() {
 		for (int i = 0; i < n_produtos_cadastrados; i++) {
 			if (codigo == lista_produtos[i].codigo) {
 				tela_edicao(&lista_produtos[i]);
-			} else {
-				printf("Produto não encontrado.\n");
+				break;
 			}
 		}
 	} while (!sair);

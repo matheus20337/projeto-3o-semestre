@@ -5,6 +5,7 @@
 #include "utilidades.h"
 #include "tela_cadastro.h"
 #include "manipulacao_csv.h"
+#include "tela_edicao_lista.h"
 
 /**
  * Mostra todos os produtos na tela.
@@ -70,7 +71,7 @@ void tela_principal() {
 				break;
 			case 3:
 				limpa_tela();
-				printf("Não Implementado.\n");
+				tela_edicao_lista();
 				break;
 			case 4:
 				limpa_tela();

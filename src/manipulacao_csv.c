@@ -41,7 +41,7 @@ void ler_arquivo_csv(char* nome_arquivo) {
 	// Lê as informações dos produtos do arquivo CSV
 	int n_dados;
 	while (!feof(arquivo)) {
-		n_dados = fscanf(arquivo, "%d,%[^,],%[^,],%[^,],%f,%d,%f,%d,%d",
+		n_dados = fscanf(arquivo, "%d;%[^;];%[^;];%[^;];%f;%d;%f;%d;%d",
 				&lista_produtos[n_produtos_cadastrados].codigo,
 				lista_produtos[n_produtos_cadastrados].nome,
 				lista_produtos[n_produtos_cadastrados].marca,
@@ -81,11 +81,11 @@ void salvar_produtos_csv(const char *nome_arquivo) {
 	}
 
 	// Escreve o cabeçalho do arquivo CSV
-	fprintf(arquivo, "Código,Nome,Marca,Categoria,Custo Pacote,Quantidade por Pacote,Preço Unitário,Quantidade Mínima,Status\n");
+	fprintf(arquivo, "Código;Nome;Marca;Categoria;Custo Pacote;Quantidade por Pacote;Preço Unitário;Quantidade Mínima;Status\n");
 
 	// Itera sobre a lista de produtos e escreve cada um no arquivo CSV
 	for (int i = 0; i < n_produtos_cadastrados; i++) {
-		fprintf(arquivo, "%d,%s,%s,%s,%.2f,%d,%.2f,%d,%d\n",
+		fprintf(arquivo, "%d;%s;%s;%s;%.2f;%d;%.2f;%d;%d\n",
 				lista_produtos[i].codigo,
 				lista_produtos[i].nome,
 				lista_produtos[i].marca,

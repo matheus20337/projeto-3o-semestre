@@ -40,7 +40,7 @@ void ler_arquivo_csv(char* nome_arquivo) {
 
 	// Lê as informações dos produtos do arquivo CSV
 	int n_dados;
-	while (!feof(arquivo)) {
+	while (!feof(arquivo) && n_produtos_cadastrados < MAX_PRODUTOS) {
 		n_dados = fscanf(arquivo, "%d;%[^;];%[^;];%[^;];%f;%d;%f;%d;%d",
 				&lista_produtos[n_produtos_cadastrados].codigo,
 				lista_produtos[n_produtos_cadastrados].nome,
@@ -55,6 +55,14 @@ void ler_arquivo_csv(char* nome_arquivo) {
 			trim_str(lista_produtos[n_produtos_cadastrados].nome);
 			trim_str(lista_produtos[n_produtos_cadastrados].marca);
 			trim_str(lista_produtos[n_produtos_cadastrados].categoria);
+
+			for (int i = 0; i < n_produtos_cadastrados; i++) {
+				if (lista_produtos[i].codigo == lista_produtos[n_produtos_cadastrados].codigo) {
+					printf("ERRO: Existem produtos com códigos repetidos no arquivo. Nenhum produto foi cadastrado.\n");
+					n_produtos_cadastrados = 0;
+					return;
+				}
+			}
 
 			n_produtos_cadastrados++;
 		} else {

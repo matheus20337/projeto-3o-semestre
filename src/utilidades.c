@@ -146,7 +146,7 @@ bool pergunta_sim_ou_nao(char *pergunta) {
 
 	setbuf(stdin, NULL);
 
-	printf("%s [S/n] ", pergunta);
+	printf("%s [s/N] ", pergunta);
 	scanf("%c", &c);
 
 	if (c == 's' || c == 'S') return true;

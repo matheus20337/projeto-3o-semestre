@@ -21,12 +21,10 @@ void tela_cadastro() {
 	do {
 		prod_temporario.codigo = pergunta_inteiro("Digite o código do produto: ");
 
-		codigo_repetido = false;
-		for (int i = 0; i < n_produtos_cadastrados; i++) {
-			if (prod_temporario.codigo == lista_produtos[i].codigo) {
-				printf("ERRO: há um produto com este mesmo código cadastrado no sistema.\n");
-				codigo_repetido = true;
-			}
+		codigo_repetido = produto_existe(prod_temporario.codigo);
+
+		if (codigo_repetido) {
+			printf("ERRO: há um produto com este mesmo código cadastrado no sistema.\n");
 		}
 	} while (codigo_repetido);
 
@@ -43,8 +41,8 @@ void tela_cadastro() {
 	prod_temporario.preco_unitario = pergunta_float("Digite o preço unitário: ");
 	prod_temporario.qnt_minima = pergunta_inteiro("Digite a quantidade mínima desejada no estoque: ");
 	putchar('\n');
-	lista_produtos[n_produtos_cadastrados] = prod_temporario;
-	n_produtos_cadastrados++;
+
+	adicionar_produto(prod_temporario);
 
 	printf("Produto cadastrado no sistema.\n\n");
 }

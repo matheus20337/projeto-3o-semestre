@@ -106,5 +106,6 @@ void salvar_produtos_csv(const char *nome_arquivo) {
 	}
 
 	fclose(arquivo);
+	base_alterada = false;
 	printf("Produtos salvos com sucesso em '%s'.\n", nome_arquivo);
 }

@@ -1,11 +1,8 @@
 # Altere este valor para o seu compilador.
 CC=gcc
 
-all: main.o utilidades.o tela_cadastro.o tela_principal.o tela_inicial.o manipulacao_csv.o tela_edicao_lista.o tela_edicao.o tela_remocao.o
-	$(CC) main.o utilidades.o manipulacao_csv.o tela_cadastro.o tela_principal.o tela_inicial.o tela_edicao_lista.o tela_edicao.o tela_remocao.o -o cadastro.exe
-
-unix: main.o utilidades.o tela_cadastro.o tela_principal.o tela_inicial.o manipulacao_csv.o tela_edicao_lista.o tela_edicao.o tela_remocao.o
-	$(CC) main.o utilidades.o manipulacao_csv.o tela_cadastro.o tela_principal.o tela_inicial.o tela_edicao_lista.o tela_edicao.o tela_remocao.o -o cadastro
+all: main.o utilidades.o tela_cadastro.o tela_principal.o tela_inicial.o manipulacao_csv.o tela_edicao_lista.o tela_edicao.o tela_remocao.o produto.o
+	$(CC) main.o utilidades.o manipulacao_csv.o tela_cadastro.o tela_principal.o tela_inicial.o tela_edicao_lista.o tela_edicao.o tela_remocao.o produto.o -o cadastro.exe
 
 main.o: src/main.c src/produto.h src/utilidades.h src/tela_inicial.h
 	$(CC) -c src/main.c
@@ -25,6 +22,8 @@ tela_edicao.o: src/produto.h src/utilidades.h src/tela_edicao.c
 	$(CC) -c src/tela_edicao.c
 tela_remocao.o: src/produto.h src/tela_remocao.c
 	$(CC) -c src/tela_remocao.c
+produto.o: src/produto.c src/produto.h
+	$(CC) -c src/produto.c
 
 clean:
-	rm *.o cadastro cadastro.exe
+	rm *.o cadastro.exe

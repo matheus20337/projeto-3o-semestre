@@ -8,17 +8,21 @@ void tela_edicao(produto *prod) {
 	char entrada;
 	int opcao;
 	bool sair = false;
+	produto prod_temporario;
 
 	do {
+		/* Mantemos uma cópia do produto para passá-la às funções relevantes. */
+		prod_temporario = *prod;
+
 		limpa_tela();
 		printf("================================\n");
 		printf("Código: %d\n", prod->codigo);
 		printf("1: Nome: %s\n", prod->nome);
 		printf("2: Fabricante: %s\n", prod->marca);
 		printf("3: Categoria: %s\n", prod->categoria);
-		printf("4: Custo por pacote: %f\n", prod->custo_pacote);
-		printf("5: Quantidade por pacote: %d\n", prod->custo_pacote);
-		printf("6: Preço unitário: %f\n", prod->preco_unitario);
+		printf("4: Custo por pacote: %.2f\n", prod->custo_pacote);
+		printf("5: Quantidade por pacote: %d\n", prod->qnt_por_pacote);
+		printf("6: Preço unitário: %.2f\n", prod->preco_unitario);
 		printf("7: Quantidade mínima: %d\n", prod->qnt_minima);
 		printf("8: Status: %s\n", prod->status ? "Ativo" : "Intativao");
 		printf("================================\n");
@@ -52,33 +56,35 @@ void tela_edicao(produto *prod) {
 		switch(opcao) {
 			case 1:
 				printf("Digite o novo nome do produto: ");
-				get_str(prod->nome, MAX_TAMANHO_NOME);
+				get_str(prod_temporario.nome, MAX_TAMANHO_NOME);
 				break;
 			case 2:
 				printf("Digite o novo fabricante do produto: ");
-				get_str(prod->marca, MAX_TAMANHO_MARCA);
+				get_str(prod_temporario.marca, MAX_TAMANHO_MARCA);
 				break;
 			case 3:
 				printf("Digite a nova categoria do produto: ");
-				get_str(prod->categoria, MAX_TAMANHO_CATEGORIA);
+				get_str(prod_temporario.categoria, MAX_TAMANHO_CATEGORIA);
 				break;
 			case 4:
-				prod->custo_pacote = pergunta_float("Digite o novo custo por pacote: ");
+				prod_temporario.custo_pacote = pergunta_float("Digite o novo custo por pacote: ");
 				break;
 			case 5:
-				prod->qnt_por_pacote = pergunta_inteiro("Digite a nova quantidade por pacote: ");
+				prod_temporario.qnt_por_pacote = pergunta_inteiro("Digite a nova quantidade por pacote: ");
 				break;
 			case 6:
-				prod->preco_unitario = pergunta_float("Digite o novo preço unitário: ");
+				prod_temporario.preco_unitario = pergunta_float("Digite o novo preço unitário: ");
 				break;
 			case 7:
-				prod->qnt_minima = pergunta_inteiro("Digite a nova quantidade mínima desejada no estoque: ");
+				prod_temporario.qnt_minima = pergunta_inteiro("Digite a nova quantidade mínima desejada no estoque: ");
 				break;
 			case 8:
-				prod->status = !prod->status;
+				prod_temporario.status = !prod_temporario.status;
 				break;
 			default:
 				printf("Opção inválida.\n");
+				continue;
 		}
+		editar_produto(prod, prod_temporario);
 	} while (!sair);
 }

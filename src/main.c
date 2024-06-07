@@ -13,6 +13,7 @@
  */
 produto *lista_produtos;
 int n_produtos_cadastrados;
+bool base_alterada;
 
 int main() {
 	setlocale(LC_ALL, "pt_BR.UTF-8");

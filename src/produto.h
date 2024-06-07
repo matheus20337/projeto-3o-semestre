@@ -30,5 +30,13 @@ typedef struct produto {
  */
 extern produto *lista_produtos;
 extern int n_produtos_cadastrados;
+/* Variável utilizada para a mensagem de sair sem salvar. */
+extern bool base_alterada;
+
+bool produto_existe(int codigo);
+int obter_index(int codigo);
+bool adicionar_produto(produto prod);
+void editar_produto(produto *original, produto editado);
+bool remover_produto(int index);
 
 #endif /* PRODUTO_H */

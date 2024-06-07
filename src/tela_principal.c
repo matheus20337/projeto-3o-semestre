@@ -9,7 +9,7 @@
 #include "tela_remocao.h"
 
 /**
- * Mostra todos os produtos na tela.
+ * Mostra todos os produtos, com todos os seus campos, na tela.
  */
 void listar_produtos() {
 	if (n_produtos_cadastrados >= 1) {

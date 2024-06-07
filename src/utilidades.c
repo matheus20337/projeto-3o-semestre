@@ -3,10 +3,6 @@
 #include <stdbool.h>
 #include <ctype.h>
 
-/**
- * Remove os espaços inúteis antes e depois do texto.
- * Ex: "   olá, mundo   " -> "olá, mundo"
- */
 void trim_str(char str[]) {
 	int i = 0;
 
@@ -51,25 +47,6 @@ void trim_str(char str[]) {
 	str[tamanho_da_string_util] = '\0';
 }
 
-/**
- * Coleta uma string do stdin até encontrar uma quebra 
- * de linha, EOF, ou chegar em um limite pré-determinado de caracteres.
- * A quebra de linha não é preservada e espaços inúteis antes e depois
- * da string são removidos.
- *
- * Abaixo está o motivo desta função existir:
- * 1. scanf() e gets() não respeitam um limite de
- * caracteres, logo não são seguras.
- * 2. fgets preserva a quebra de linha na string coletada,
- * algo que não é desejado para nossa aplicação.
- *
- * Embora seja possível simplesmente remover a quebra de linha,
- * acredito ser mais claro e eficiente simplesmente ignorá-la por
- * completo.
- *
- * @param str variável para onde será armazenada a string.
- * @param limite tamanho máximo da string.
- */
 void get_str(char *str, int limite) {
 	char c;
 	int i = 0;
@@ -84,12 +61,6 @@ void get_str(char *str, int limite) {
 	trim_str(str);
 }
 
-
-
-/**
- * Pergunta ao usuário um número inteiro repetidas vezes
- * até receber um número inteiro.
- */
 int pergunta_inteiro(char *pergunta) {
 	int resposta, status;
 
@@ -113,10 +84,6 @@ int pergunta_inteiro(char *pergunta) {
 	return resposta;
 }
 
-/**
- * Pergunta ao usuário um número real repetidas vezes
- * até receber um número real.
- */
 float pergunta_float(char *pergunta) {
 	int status;
 	float resposta;
@@ -154,9 +121,6 @@ bool pergunta_sim_ou_nao(char *pergunta) {
 	return false;
 }
 
-/**
- * No melhor dos casos, limpa a tela do terminal, no pior dos casos, nada acontece.
- */
 void limpa_tela() {
 	#ifdef _WIN32
 	system("cls");

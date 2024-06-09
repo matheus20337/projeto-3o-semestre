@@ -16,9 +16,5 @@ Para compilar o projeto no windows, basta executar a seguinte linha de comando:
 ```
 make
 ```
-Para compilar o projeto em sistemas _unix-like_, o comando será
-```
-make unix
-```
 
 Por fim, o comando `make clean` removerá os arquivos gerados pelo compilador.
